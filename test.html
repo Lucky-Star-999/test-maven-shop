@@ -10,18 +10,30 @@
 <body>
 
     <script>
-        const apiUrl = 'http://localhost:8080/product/hi';
-        const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJbe1wicm9sZVwiOlwiUk9MRV9BRE1JTlwifV0iLCJleHAiOjE3MDMzNDc2NDl9.LC9LbgB8fKHXcSTgF0gN5fMEq-9CruiXTr7lNOevEoQ';
+        const apiUrl = 'http://192.168.0.134:8080/product';
+
+        let token = localStorage.getItem('token');
+
+
+
+        const bearerToken = token;
+
         const params = {
-            name: 'Lộc'
+            // file: null,
+            title: 'Permit all add 1',
+            price: '123456',
+            idCategory: '1'
         };
 
         const paramString = new URLSearchParams(params).toString();
 
+        console.log(token);
+
+        console.log(paramString);
+
         fetch(apiUrl, {
                 method: 'POST',
                 headers: {
-                    // 'Content-Type': 'application/json',
                     'Authorization': `Bearer ${bearerToken}`,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
@@ -34,6 +46,7 @@
             .then(dataFromAPI => {
                 console.log(dataFromAPI);
             });
+
     </script>
 </body>
 

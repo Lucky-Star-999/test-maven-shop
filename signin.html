@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+
+<body>
+
+    <script>
+
+        const apiUrl = 'http://192.168.0.134:8080/user/signin';
+        const params = {
+            username: 'nguyenvana@gmail.com',
+            password: '123'
+        };
+
+        const paramString = new URLSearchParams(params).toString();
+
+        fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: paramString
+            })
+            .then(response => {
+                // return response.json();
+                return response.json();
+            })
+            .then(dataFromAPI => {
+                console.log(dataFromAPI.data);
+                localStorage.setItem('token', dataFromAPI.data);
+                console.log(dataFromAPI);
+            });
+    </script>
+</body>
+
+</html>
+
+
