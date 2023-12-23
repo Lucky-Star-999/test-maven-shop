@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        // const apiUrl = 'http://192.168.0.134:8080/product/hi';
+        // const apiUrl = 'http://192.168.0.134:8080/product/hi';
+        // fetch(apiUrl, {
+        //         method: 'POST',
+        //         credentials: 'include', // include credentials (cookies, HTTP authentication) in the request
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //             // Add other headers as needed
+        //         },
+        //         body: {
+        //             name: "Linh 2222"
+        //         }
+        //     })
+        //     .then(response => {
+        //         // return response.json();
+        //         return response.text();
+        //     })
+        //     .then(dataFromAPI => {
+        //         console.log(dataFromAPI);
+        //     });
+
+
+
+
+        const apiUrl = 'http://localhost:8080/hi';
+        const params = {
+            name: 'Linh 2222'
+        };
+
+        const paramString = new URLSearchParams(params).toString();
+
+        console.log(paramString);
+        fetch(apiUrl, {
+                method: 'POST',
+                credentials: 'include', // include credentials (cookies, HTTP authentication) in the request
+                headers: {
+                    // 'Content-Type': 'application/json',
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                    // Add other headers as needed
+                },
+                body: paramString
+            })
+            .then(response => {
+                // return response.json();
+                return response.text();
+            })
+            .then(dataFromAPI => {
+                console.log(dataFromAPI);
+            });
+    </script>
+</body>
+
+</html>
