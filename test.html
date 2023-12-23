@@ -11,6 +11,7 @@
 
     <script>
         const apiUrl = 'http://localhost:8080/product/hi';
+        const bearerToken = '';
         const params = {
             name: 'Lộc'
         };
@@ -22,6 +23,7 @@
                 credentials: 'include', // include credentials (cookies, HTTP authentication) in the request
                 headers: {
                     // 'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${bearerToken}`,
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
                 body: paramString
